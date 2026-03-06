@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Issues Tracker | Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/Aperture.png" type="image/x-icon" />
+
+    <!-- tailwind+daisy  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Remix Icon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen max-w-2xl bg-base-200 mx-auto">
+    <div class="shadow border-2 border-amber-200">
+      <div >
+        <div
+          class="logo max-w-fit mx-auto pt-32 flex flex-col items-center space-y-6"
+        >
+          <img
+            src="assets/github-logo.png"
+            alt="logo"
+            title="GitHub Issues Tracker"
+          />
+          <div class="text-center">
+            <h2 class="text-2xl font-semibold text-[#1F293]">
+              GitHub Issues Tracker
+            </h2>
+            <p class="font-normal text-[16px] text-[#64748B]">
+              Sign in to manage your issues
+            </p>
+          </div>
+        </div>
+
+        <form
+          class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
+        >
+          <fieldset class="fieldset">
+            <label class="label text-[#1F2937] text-lg font-medium">Username</label>
+            <input
+              type="text"
+              class="input validator"
+              placeholder="Enter Username"
+              value="admin"
+              required
+            />
+            <p class="validator-hint hidden">Required</p>
+            <p class="text-blue-600 font-normal text-[14px]">Default: admin</p>
+          </fieldset>
+
+          <label class="fieldset">
+            <span class="label text-[#1F2937] text-lg font-medium">Password</span>
+            <input
+              type="password"
+              class="input validator"
+              placeholder="Password"
+              value="admin123"
+              required
+            />
+            <span class="validator-hint hidden">Required</span>
+            <p class="text-blue-600 font-normal text-[14px]">Default: admin123</p>
+          </label>
+
+          <button class="btn btn-neutral mt-4 bg-[#4A00FF] border-0" type="submit">Sign In</button>
+        </form>
+
+      </div>
+    </div>
+
+    <script src="script/login.js"></script>
+  </body>
+</html>
