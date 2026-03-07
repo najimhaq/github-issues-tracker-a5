@@ -22,19 +22,18 @@ async function loadIssues() {
   const { data } = await res.json();
 
   allIssues = data;
-  updateIssueCounts();
+
+  updateIssueCounts(allIssues);
 
   renderIssues(allIssues);
 }
 /* === Counting Issues === */
-function updateIssueCounts() {
-  const total = allIssues.length;
+function updateIssueCounts(issues) {
+  const total = issues.length;
 
-  const openIssues = allIssues.filter(
-    (issue) => issue.status === 'open'
-  ).length;
+  const openIssues = issues.filter((issue) => issue.status === 'open').length;
 
-  const closedIssues = allIssues.filter(
+  const closedIssues = issues.filter(
     (issue) => issue.status === 'closed'
   ).length;
 
@@ -151,18 +150,25 @@ function setupFilters() {
   allBtn.addEventListener('click', () => {
     setActive(allBtn);
     renderIssues(allIssues);
+    updateIssueCounts(allIssues);
   });
 
   openBtn.addEventListener('click', () => {
     setActive(openBtn);
+
     const openIssues = allIssues.filter((issue) => issue.status === 'open');
+
     renderIssues(openIssues);
+    updateIssueCounts(openIssues);
   });
 
   closeBtn.addEventListener('click', () => {
     setActive(closeBtn);
+
     const closedIssues = allIssues.filter((issue) => issue.status === 'closed');
+
     renderIssues(closedIssues);
+    updateIssueCounts(closedIssues);
   });
 }
 //button toggle
