@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   setupSearch();
 });
 
+/* === fetch from api and load ui === */
 async function loadIssues() {
   const container = document.getElementById('data-card-all');
 
@@ -43,7 +44,7 @@ function updateIssueCounts() {
 
   document.getElementById('close-count').innerText = closedIssues;
 }
-//=========
+/* ===  */
 function renderIssues(issues) {
   const container = document.getElementById('data-card-all');
 
@@ -205,7 +206,7 @@ function openModal(id) {
 
   statusBadge.innerText = issue.status === 'open' ? 'Opened' : 'Closed';
 
-  // Labels
+  // Labels 
   const labelsContainer = document.getElementById('modal-labels');
 
   labelsContainer.innerHTML = (issue.labels || [])
