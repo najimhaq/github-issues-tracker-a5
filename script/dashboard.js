@@ -265,5 +265,5 @@ logoutBtn.addEventListener('click', function (e) {
   localStorage.removeItem('user');
 
   // redirect to login page
-  window.location.href = 'login.html';
+  window.location.href = 'index.html';
 });
