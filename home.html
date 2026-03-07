@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Issues Page | Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/Aperture.png" type="image/x-icon" />
+
+    <!-- tailwind+daisy  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Remix Icon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="mb-10">
+      <div
+        class="navbar flex flex-wrap justify-between items-center bg-base-100 shadow-sm px-4 md:px-12 min-h-16"
+      >
+        <!-- Left: Logo -->
+        <div class="flex items-center gap-3 shrink-0">
+          <img class="w-10 h-10" src="./assets/github-logo.png" alt="logo" />
+          <a
+            class="btn btn-ghost normal-case text-xl md:text-2xl text-gray-800 no-animation"
+          >
+            GitHub Issues Tracker
+          </a>
+        </div>
+
+        <!-- Right: Desktop Actions -->
+        <div class="flex items-center gap-3 hidden md:flex">
+          <!-- Search -->
+          <label
+            class="input input-bordered flex items-center gap-2 grow max-w-xs"
+          >
+            <i class="ri-search-line text-[#64748]"></i>
+            <input type="search" required placeholder="Search" class="grow" />
+          </label>
+          <!-- New Issue -->
+          <button class="btn btn-primary gap-2">
+            <i class="ri-add-line"></i> New Issue
+          </button>
+          <!-- LogOut -->
+          <a href="/login.html" class="btn btn-error gap-2 text-white">
+            <i class="ri-logout-box-line"></i> Log Out
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="dropdown dropdown-end md:hidden shrink-0">
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <i class="ri-menu-line text-xl"></i>
+          </label>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <label class="input input-bordered flex items-center gap-2">
+                <i class="ri-search-line"></i>
+                <input
+                  type="search"
+                  required
+                  placeholder="Search"
+                  class="grow"
+                />
+              </label>
+            </li>
+            <li>
+              <a class="justify-start gap-2 text-sm"
+                ><i class="ri-add-line"></i> New Issue</a
+              >
+            </li>
+            <li>
+              <a
+                href="/login.html"
+                class="justify-start gap-2 text-error text-sm font-bold"
+                ><i class="ri-logout-box-line"></i> Log Out</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- Button Section -->
+      <section class="px-4 md:px-12 py-6 mb-4">
+        <div
+          id="btn-group"
+          class="w-full md:w-9/12 mx-auto flex flex-wrap justify-start md:justify-start gap-2 rounded-xl shadow p-4 md:p-6"
+        >
+          <button
+            id="select-all"
+            class="btn btn-primary min-w-[100px] md:min-w-32 flex-1 md:flex-none"
+          >
+            All
+          </button>
+          <button
+            id="select-open"
+            class="btn btn-outline min-w-[100px] md:min-w-32 flex-1 md:flex-none"
+          >
+            Open
+          </button>
+          <button
+            id="select-close"
+            class="btn btn-outline min-w-[100px] md:min-w-32 flex-1 md:flex-none"
+          >
+            Close
+          </button>
+        </div>
+      </section>
+      <!-- 50 Issues Section -->
+      <section class="px-4 md:px-12 py-6 mb-4">
+        <div
+          id="issues-text"
+          class="w-full md:w-9/12 mx-auto flex flex-wrap justify-between md:justify-between gap-3 rounded-xl shadow p-4 md:p-6"
+        >
+          <!-- Left -->
+          <div class="flex gap-3 justify-center items-center">
+            <img src="./assets/Aperture.png" alt="icon" />
+            <div>
+              <h2 class="text-xl font-semibold text-[#1F2937]">50 Issues</h2>
+              <p class="text-lg font-normal text-[#64748B]">
+                Track and manage your project issues
+              </p>
+            </div>
+          </div>
+          <!-- Right -->
+          <div class="flex gap-5">
+            <p class="font-medium text-lg">
+              <i class="ri-circle-fill mr-1 text-[#00A96E]"></i>Open
+            </p>
+            <p class="font-medium text-lg">
+              <i class="ri-circle-fill mr-1 text-[#A855F7]"></i>Close
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Data Section Api -->
+      <section class="px-4 md:px-12 py-6 mb-4">
+        <div
+          id="data-card-all"
+          class="w-full md:w-9/12 mx-auto grid md:grid-cols-4 gap-3 rounded-xl shadow p-4 md:p-6"
+        >
+          <!-- Card -->
+          <div
+            id="data-card-item"
+            class="flex flex-col justify-between shadow rounded-2xl"
+          >
+            <div class="flex flex-col gap-5">
+              <!-- up -->
+              <div class="flex justify-between">
+                <img src="./assets/Open-Status.png" alt="status" />
+                <div
+                  class="bg-[#FECACA] py-1 px-6.5 rounded-4xl text-[#EF4444] font-medium"
+                >
+                  High
+                </div>
+              </div>
+              <!-- center -->
+              <div>
+                <div>
+                  <h2>Fix navigation menu on mobile devices</h2>
+                <p>
+                  The navigation menu doesn't collapse properly on mobile
+                  devices...
+                </p>
+                </div>
+                <div>
+                  <div class="badge badge-error">
+                    <i class="ri-bug-line"></i>Bug
+                  </div>
+                  <div class="badge badge-warning">
+                    <i class="ri-remix-line"></i>Help wanted
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script/dashboard.js"></script>
+  </body>
+</html>
