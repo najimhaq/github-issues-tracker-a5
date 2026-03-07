@@ -10,12 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const getPassword = inputPass.value.trim();
 
     if (!getUserName || !getPassword) {
-      alert('Username এবং Password প্রয়োজন');
+      alert('Please input Username and Password');
       return;
     }
 
     try {
-      // এখানে শুধু ডেমো হিসেবে hardcoded চেক করা হচ্ছে
       if (getUserName === 'admin' && getPassword === 'admin123') {
         alert('Login Successfully');
         window.location.assign('/dashboard.html');
@@ -23,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Login failed');
       }
     } catch (error) {
-      alert('কিছু সমস্যা হয়েছে');
+      alert('Problem');
       console.error(error);
     }
   });
