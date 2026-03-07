@@ -254,3 +254,16 @@ function setupSearch() {
     renderIssues(filteredIssues);
   });
 }
+//Logout button
+const logoutBtn = document.getElementById('logOut');
+
+logoutBtn.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // Remove user data or token
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+
+  // redirect to login page
+  window.location.href = '/login.html';
+});
