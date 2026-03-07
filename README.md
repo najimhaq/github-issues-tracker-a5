@@ -58,5 +58,5 @@ Built with **HTML, TailwindCSS, and JavaScript**.
 ---
 
 ## 📱 Live Link
-https://issues-tracker-410241.netlify.app/
+https://vercel.com/md-najimuls-projects/github-issues-tracker-a5
 
