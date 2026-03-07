@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // এখানে শুধু ডেমো হিসেবে hardcoded চেক করা হচ্ছে
       if (getUserName === 'admin' && getPassword === 'admin123') {
         alert('Login Successfully');
-        window.location.assign('/home.html');
+        window.location.assign('/dashboard.html');
       } else {
         alert('Login failed');
       }

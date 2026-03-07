@@ -43,14 +43,14 @@
           </a>
         </div>
 
-        <!-- Right: Desktop Actions -->
+        <!-- RIght -->
         <div class="flex items-center gap-3 hidden md:flex">
           <!-- Search -->
           <label
             class="input input-bordered flex items-center gap-2 grow max-w-xs"
           >
             <i class="ri-search-line text-[#64748]"></i>
-            <input type="search" required placeholder="Search" class="grow" />
+            <input id="search-input" type="search" required placeholder="Search" class="grow" />
           </label>
           <!-- New Issue -->
           <button class="btn btn-primary gap-2">
@@ -156,8 +156,55 @@
       <section class="px-4 md:px-12 mb-8">
         <div
           id="data-card-all"
-          class="w-full md:w-9/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          class="w-full md:w-9/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6"
         ></div>
+      </section>
+      <!-- modal -->
+      <section>
+        <dialog id="issueModal" class="modal">
+          <div class="modal-box max-w-3xl p-8">
+            <!-- Title -->
+            <h2 id="modal-title" class="text-3xl font-bold mb-3"></h2>
+
+            <!-- Status + Author + Date -->
+            <div class="flex items-center gap-3 text-sm text-gray-500 mb-5">
+              <span id="modal-status" class="badge badge-success">Opened</span>
+              <span>•</span>
+              <span id="modal-author" class="text-[#64748B]"></span>
+              <span>•</span>
+              <span id="modal-date"></span>
+            </div>
+
+            <!-- Labels -->
+            <div id="modal-labels" class="flex gap-3 mb-6"></div>
+
+            <!-- Description -->
+            <p id="modal-description" class="text-gray-500 text-lg mb-6"></p>
+
+            <!-- Assignee + Priority -->
+            <div class="bg-base-200 rounded-xl p-6 flex justify-between">
+              <div>
+                <p class="text-gray-500 mb-1">Assignee:</p>
+                <p id="modal-assignee" class="font-semibold text-xl"></p>
+              </div>
+
+              <div>
+                <p class="text-gray-500 mb-1">Priority:</p>
+                <span
+                  id="modal-priority"
+                  class="badge badge-error px-4 py-3"
+                ></span>
+              </div>
+            </div>
+
+            <!-- Close Button -->
+            <div class="modal-action mt-6">
+              <form method="dialog">
+                <button class="btn btn-primary">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </section>
     </main>
 

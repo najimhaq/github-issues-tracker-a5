@@ -1,5 +1,6 @@
 let allIssues = [];
-
+const title = document.getElementById('issue-title');
+console.log(title);
 document.addEventListener('DOMContentLoaded', async () => {
   await loadIssues();
   setupFilters();
@@ -79,7 +80,7 @@ function renderIssues(issues) {
       );
 
       return `
-      <div class="card bg-base-100 shadow-lg hover:shadow-xl transition">
+      <div onclick="openModal(${issue.id})" class="card bg-base-100 shadow-lg border-t-4 border-t-[#00A96E] hover:shadow-xl transition">
 
         <div class="card-body">
 
@@ -93,7 +94,7 @@ function renderIssues(issues) {
           </div>
 
           <!-- Title -->
-          <h2 class="font-semibold text-lg mt-2">
+          <h2 class="font-semibold text-lg mt-2 cursor-pointer">
             ${issue.title}
           </h2>
 
@@ -157,3 +158,72 @@ function setActive(activeBtn) {
   activeBtn.classList.remove('btn-outline');
   activeBtn.classList.add('btn-primary');
 }
+
+//modal
+function openModal(id) {
+  const issue = allIssues.find((issue) => issue.id === id);
+
+  document.getElementById('modal-title').innerText = issue.title;
+
+  document.getElementById('modal-description').innerText = issue.description;
+
+  document.getElementById('modal-author').innerText =
+    'Opened by ' + issue.author;
+
+  document.getElementById('modal-assignee').innerText = issue.author;
+
+  document.getElementById('modal-date').innerText = new Date(
+    issue.createdAt
+  ).toLocaleDateString();
+
+  document.getElementById('modal-priority').innerText =
+    issue.priority.toUpperCase();
+
+  // Status
+  const statusBadge = document.getElementById('modal-status');
+
+  statusBadge.className =
+    issue.status === 'open' ? 'badge badge-success' : 'badge badge-neutral';
+
+  statusBadge.innerText = issue.status === 'open' ? 'Opened' : 'Closed';
+
+  // Labels
+  const labelsContainer = document.getElementById('modal-labels');
+
+  labelsContainer.innerHTML = (issue.labels || [])
+    .map((label) => {
+      let color = 'badge-warning';
+      let icon = 'ri-price-tag-3-line';
+
+      if (label.toLowerCase() === 'bug') {
+        color = 'badge-error';
+        icon = 'ri-bug-line';
+      }
+
+      if (label.toLowerCase() === 'help wanted') {
+        color = 'badge-warning';
+        icon = 'ri-remix-line';
+      }
+
+      return `
+      <div class="badge ${color} gap-1 px-4 py-2">
+        <i class="${icon}"></i> ${label}
+      </div>
+      `;
+    })
+    .join('');
+
+  document.getElementById('issueModal').showModal();
+}
+//search with filter
+const searchInput = document.getElementById('search-input');
+
+searchInput.addEventListener('input', (e) => {
+  const searchText = e.target.value.toLowerCase();
+
+  const filteredIssues = allIssues.filter((issue) =>
+    issue.title.toLowerCase().includes(searchText)
+  );
+
+  renderIssues(filteredIssues);
+});
