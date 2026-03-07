@@ -1,9 +1,8 @@
 let allIssues = [];
-const title = document.getElementById('issue-title');
-console.log(title);
 document.addEventListener('DOMContentLoaded', async () => {
   await loadIssues();
   setupFilters();
+  setupSearch();
 });
 
 async function loadIssues() {
@@ -22,10 +21,29 @@ async function loadIssues() {
   const { data } = await res.json();
 
   allIssues = data;
+  updateIssueCounts();
 
   renderIssues(allIssues);
 }
+/* === Counting Issues === */
+function updateIssueCounts() {
+  const total = allIssues.length;
 
+  const openIssues = allIssues.filter(
+    (issue) => issue.status === 'open'
+  ).length;
+
+  const closedIssues = allIssues.filter(
+    (issue) => issue.status === 'closed'
+  ).length;
+
+  document.getElementById('total-count').innerText = `${total} Issues`;
+
+  document.getElementById('open-count').innerText = openIssues;
+
+  document.getElementById('close-count').innerText = closedIssues;
+}
+//=========
 function renderIssues(issues) {
   const container = document.getElementById('data-card-all');
 
@@ -216,14 +234,16 @@ function openModal(id) {
   document.getElementById('issueModal').showModal();
 }
 //search with filter
-const searchInput = document.getElementById('search-input');
+function setupSearch() {
+  const searchInput = document.getElementById('search-input');
 
-searchInput.addEventListener('input', (e) => {
-  const searchText = e.target.value.toLowerCase();
+  searchInput.addEventListener('input', (e) => {
+    const searchText = e.target.value.toLowerCase();
 
-  const filteredIssues = allIssues.filter((issue) =>
-    issue.title.toLowerCase().includes(searchText)
-  );
+    const filteredIssues = allIssues.filter((issue) =>
+      issue.title.toLowerCase().includes(searchText)
+    );
 
-  renderIssues(filteredIssues);
-});
+    renderIssues(filteredIssues);
+  });
+}

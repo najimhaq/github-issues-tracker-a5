@@ -29,7 +29,7 @@
     />
   </head>
   <body>
-    <header class="mb-10">
+    <header class="mb-5">
       <div
         class="navbar flex flex-wrap justify-between items-center bg-base-100 shadow-sm px-4 md:px-12 min-h-16"
       >
@@ -50,7 +50,13 @@
             class="input input-bordered flex items-center gap-2 grow max-w-xs"
           >
             <i class="ri-search-line text-[#64748]"></i>
-            <input id="search-input" type="search" required placeholder="Search" class="grow" />
+            <input
+              id="search-input"
+              type="search"
+              required
+              placeholder="Search"
+              class="grow"
+            />
           </label>
           <!-- New Issue -->
           <button class="btn btn-primary gap-2">
@@ -135,19 +141,25 @@
           <div class="flex gap-3 justify-center items-center">
             <img src="./assets/Aperture.png" alt="icon" />
             <div>
-              <h2 class="text-xl font-semibold text-[#1F2937]">50 Issues</h2>
+              <h2 id="total-count" class="text-xl font-semibold text-[#1F2937]">
+                0 Issues
+              </h2>
               <p class="text-lg font-normal text-[#64748B]">
                 Track and manage your project issues
               </p>
             </div>
           </div>
+
           <!-- Right -->
           <div class="flex gap-5">
             <p class="font-medium text-lg">
-              <i class="ri-circle-fill mr-1 text-[#00A96E]"></i>Open
+              <i class="ri-circle-fill mr-1 text-[#00A96E]"></i>
+              Open <span id="open-count">0</span>
             </p>
+
             <p class="font-medium text-lg">
-              <i class="ri-circle-fill mr-1 text-[#A855F7]"></i>Close
+              <i class="ri-circle-fill mr-1 text-[#A855F7]"></i>
+              Close <span id="close-count">0</span>
             </p>
           </div>
         </div>
