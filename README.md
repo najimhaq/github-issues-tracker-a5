@@ -58,4 +58,5 @@ Built with **HTML, TailwindCSS, and JavaScript**.
 ---
 
 ## 📱 Live Link
+https://issues-tracker-410241.netlify.app/
 
